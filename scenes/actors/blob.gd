@@ -2,25 +2,18 @@ extends Sprite
 
 var velocity        = Vector2()
 var position        = Vector2()
-var scale           = 1.0
-var scale_direction = 1.0
-
-var color_array        = [Color(.39,.68,.21),Color(1,1,.32),Color(.98,.6,.07),Color(1,.15,.07),Color(.51,0,.65),Color(.07,.27,.98)]
-
 
 func _ready():
 	randomize()
-	scale           = rand_range( 0.5, 1.5 )
-	scale_direction = 1 - ( 2 * (randi() % 2) )
-	position        = Vector2( rand_range( 1, get_viewport().get_rect().size.x ), rand_range( 1, get_viewport().get_rect().size.y ) )
-	velocity        = Vector2( rand_range( -2, 2 ), rand_range( -2, 2 ) )
-	set_pos( position )
-	set_modulate( color_array[randi()%color_array.size()] )
+	velocity        = Vector2( rand_range( -1, 1 ), rand_range( -1, 1 ) )
 	set_fixed_process( true )
 
 func _fixed_process( delta ):
 	position = get_pos() + velocity
+	set_pos(position)
+	check_out_of_screen()
 
+func check_out_of_screen():
 	if   position.x < -100:
 		 position.x = get_viewport().get_rect().size.x + 100
 	elif position.x > get_viewport().get_rect().size.x + 100:
@@ -30,16 +23,3 @@ func _fixed_process( delta ):
 		 position.y = get_viewport().get_rect().size.y + 100
 	elif position.y > get_viewport().get_rect().size.y + 100:
 		 position.y = -100
-	set_pos(position)
-
-
-	scale += scale_direction * 0.005
-	if (scale < 0 ):
-		scale = 0
-		scale_direction = 1
-		position = Vector2( rand_range( 1, get_viewport().get_rect().size.x ), rand_range( 1, get_viewport().get_rect().size.y ) )
-		set_pos(position)
-	if (scale > 2):
-		scale_direction *=-1
-	set_scale(Vector2(scale,scale))
-

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://scenes/title.gd" type="Script" id=1]
 [ext_resource path="res://shaders/ball_material.tres" type="CanvasItemMaterial" id=2]
+[ext_resource path="res://scenes/spaceman.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
 
 [node name="root" type="Control"]
 
@@ -39,5 +41,14 @@ audio_listener/enable_2d = false
 audio_listener/enable_3d = false
 physics/object_picking = false
 gui/disable_input = false
+
+[node name="Kosmonauta" type="Node2D" parent="."]
+
+transform/pos = Vector2( 527.426, 275.742 )
+script/script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Kosmonauta"]
+
+texture = ExtResource( 4 )
 
 
