@@ -9,9 +9,9 @@ func _ready():
 	set_fixed_process( true )
 
 func _fixed_process( delta ):
-	position = get_pos() + velocity
-	set_pos(position)
-	check_out_of_screen()
+	position = get_pos()# + velocity
+	#set_pos(position)
+	#check_out_of_screen()
 
 func check_out_of_screen():
 	if   position.x < -100:

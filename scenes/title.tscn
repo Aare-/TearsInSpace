@@ -1,24 +1,23 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scenes/title.gd" type="Script" id=1]
 [ext_resource path="res://shaders/ball_material.tres" type="CanvasItemMaterial" id=2]
-[ext_resource path="res://scenes/spaceship_background.gd" type="Script" id=3]
+[ext_resource path="res://scenes/spaceship.gd" type="Script" id=3]
 [ext_resource path="res://scenes/ship.png" type="Texture" id=4]
-[ext_resource path="res://scenes/spaceship.gd" type="Script" id=5]
-[ext_resource path="res://scenes/spaceman.gd" type="Script" id=6]
-[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://scenes/spaceman.gd" type="Script" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
 
 [node name="root" type="Control"]
 
-anchor/right = 1
+anchor/top = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
+margin/top = 600.0
+margin/right = 1024.0
 margin/bottom = 0.0
 script/script = ExtResource( 1 )
 
@@ -28,18 +27,9 @@ material/material = ExtResource( 2 )
 viewport = NodePath("../Viewport")
 centered = false
 
-[node name="Spaceship_Background" type="Node2D" parent="."]
-
-transform/pos = Vector2( 512, 300 )
-script/script = ExtResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="Spaceship_Background"]
-
-transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 4 )
-
 [node name="Viewport" type="Viewport" parent="."]
 
+editor/display_folded = true
 rect = Rect2( 0, 0, 1280, 720 )
 own_world = false
 world = null
@@ -55,18 +45,45 @@ audio_listener/enable_3d = false
 physics/object_picking = false
 gui/disable_input = false
 
+[node name="Tears_Container" type="Node2D" parent="Viewport"]
+
 [node name="Spaceship" type="Node2D" parent="."]
 
 transform/pos = Vector2( 512, 300 )
-script/script = ExtResource( 5 )
+script/script = ExtResource( 3 )
+
+[node name="Spaceship_Background" type="Sprite" parent="Spaceship"]
+
+transform/scale = Vector2( 0.7, 0.7 )
+z/z = -2
+texture = ExtResource( 4 )
 
 [node name="Kosmonauta" type="Node2D" parent="Spaceship"]
 
-transform/pos = Vector2( -0.528831, 0.946815 )
-script/script = ExtResource( 6 )
+editor/display_folded = true
+script/script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Spaceship/Kosmonauta"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="Spaceship"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
 
 
