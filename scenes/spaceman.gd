@@ -13,6 +13,7 @@ func _fixed_process(delta):
 		new_tear()
 
 func new_tear():
-	var new_tear = blob.instance()
-	new_tear.set_pos( get_pos() )
-	get_node("../Viewport").add_child( new_tear )
+	var new_tear = blob.instance()	
+	
+	new_tear.set_pos( get_global_pos() )
+	get_tree().get_root().get_node("root/Viewport").add_child( new_tear )
