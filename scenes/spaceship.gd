@@ -19,5 +19,5 @@ func _input(event):
 		var normalized_mouse_delta = mouse_delta.normalized()
 		
 		
-		last_mouse_pos = event.global_pos
+#		last_mouse_pos = event.global_pos
 		

@@ -1,11 +1,15 @@
 extends Sprite
 
 var velocity        = Vector2()
+var speed_factor    = 0.5
 var position        = Vector2()
+
 
 func _ready():
 	randomize()
-	velocity        = Vector2( rand_range( -1, 1 ), rand_range( -1, 1 ) )
+	velocity        = Vector2( rand_range( -speed_factor, speed_factor )*rand_range( -speed_factor, speed_factor ), rand_range( -speed_factor, speed_factor ) * rand_range( -speed_factor, speed_factor ) )
+	var random_scale = rand_range(0.4,0.5) * rand_range(0.4,0.5)
+	set_scale ( Vector2( random_scale, random_scale ) )
 	set_fixed_process( true )
 
 func _fixed_process( delta ):

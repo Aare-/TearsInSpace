@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/title.gd" type="Script" id=1]
 [ext_resource path="res://shaders/ball_material.tres" type="CanvasItemMaterial" id=2]
 [ext_resource path="res://scenes/spaceship_background.gd" type="Script" id=3]
-[ext_resource path="res://scenes/ship.png" type="Texture" id=4]
+[ext_resource path="res://scenes/image/ship.png" type="Texture" id=4]
 [ext_resource path="res://scenes/spaceship.gd" type="Script" id=5]
 [ext_resource path="res://scenes/spaceman.gd" type="Script" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
@@ -21,22 +21,19 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ViewportSprite" type="ViewportSprite" parent="."]
 
 material/material = ExtResource( 2 )
+z/z = 2
 viewport = NodePath("../Viewport")
 centered = false
-
-[node name="Spaceship_Background" type="Node2D" parent="."]
-
-transform/pos = Vector2( 512, 300 )
-script/script = ExtResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="Spaceship_Background"]
-
-transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Viewport" type="Viewport" parent="."]
 
@@ -55,18 +52,47 @@ audio_listener/enable_3d = false
 physics/object_picking = false
 gui/disable_input = false
 
+[node name="Spaceship_Background" type="Node2D" parent="."]
+
+transform/pos = Vector2( 512, 300 )
+z/z = -2
+script/script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Spaceship_Background"]
+
+transform/scale = Vector2( 0.7, 0.7 )
+z/z = 2
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Spaceship" type="Node2D" parent="."]
 
 transform/pos = Vector2( 512, 300 )
 script/script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Kosmonauta" type="Node2D" parent="Spaceship"]
 
 transform/pos = Vector2( -0.528831, 0.946815 )
 script/script = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Spaceship/Kosmonauta"]
 
+visibility/visible = false
+z/z = 2
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 
