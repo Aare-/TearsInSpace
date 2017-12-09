@@ -1,11 +1,10 @@
 extends Node2D
-var blob         = preload("res://scenes/actors/blob.tscn")
 var tear         = preload("res://scenes/actors/tear.tscn")
 var tear_timer   = 1
 var tear_timeout = 0.1
 
 func _ready():
-	set_fixed_process(true)
+	set_fixed_process(false)
 
 func _fixed_process(delta):
 	tear_timer += delta
@@ -14,7 +13,6 @@ func _fixed_process(delta):
 		new_tear()
 
 func new_tear():
-	var new_blob = blob.instance()
-	new_blob.set_pos( get_global_pos() )
-	get_tree().get_root().get_node("root/Viewport").add_child( new_blob )
-	
+	var new_tear = tear.instance()
+	new_tear.set_pos( get_global_pos() )
+	get_tree().get_root().get_node("root/Viewport/Tears_Container").add_child( new_tear )

@@ -1,26 +1,94 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://scenes/title.gd" type="Script" id=1]
 [ext_resource path="res://shaders/ball_material.tres" type="CanvasItemMaterial" id=2]
-[ext_resource path="res://scenes/spaceship_background.gd" type="Script" id=3]
-[ext_resource path="res://scenes/image/ship.png" type="Texture" id=4]
-[ext_resource path="res://scenes/spaceship.gd" type="Script" id=5]
-[ext_resource path="res://scenes/spaceman.gd" type="Script" id=6]
-[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://scenes/spaceship.gd" type="Script" id=3]
+[ext_resource path="res://scenes/image/ship2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/image/glow.png" type="Texture" id=5]
+[ext_resource path="res://scenes/image/bg.png" type="Texture" id=6]
+[ext_resource path="res://scenes/image/bg_dust.png" type="Texture" id=7]
+
+[sub_resource type="ConcavePolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+segments = Vector2Array( -137.152, -220.582, -109.951, -205.323, -109.951, -205.323, -86.7317, -217.264, -86.7317, -217.264, -72.1365, -221.908, -72.1365, -221.908, -48.9168, -228.543, -48.9168, -228.543, -2.47734, -234.513, -2.47734, -234.513, 49.9329, -229.206, 49.9329, -229.206, 72.4892, -223.235, 72.4892, -223.235, 87.7478, -217.264, 87.7478, -217.264, 110.968, -206.65, 110.968, -206.65, 131.534, -217.928, 131.534, -217.928, 181.954, -229.206, 181.954, -229.206, 167.358, -251.762, 167.358, -251.762, 61.211, -300.192, 61.211, -300.192, -60.1949, -297.538, -60.1949, -297.538, -159.708, -256.406, -159.708, -256.406, -137.152, -220.582 )
+
+[sub_resource type="ConcavePolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+segments = Vector2Array( -251.068, -149.203, -200.347, -122.005, -200.347, -122.005, -220.194, -77.8994, -220.194, -77.8994, -230.485, -60.9922, -230.485, -60.9922, -231.221, -22.0324, -231.221, -22.0324, -231.221, 22.0731, -231.221, 22.0731, -231.956, 60.2979, -231.956, 60.2979, -219.459, 72.7944, -219.459, 72.7944, -198.141, 121.311, -198.141, 121.311, -249.598, 149.244, -249.598, 149.244, -284.147, 86.7612, -284.147, 86.7612, -287.823, 33.0995, -287.823, 33.0995, -288.558, -36.7342, -288.558, -36.7342, -281.942, -87.4556, -281.942, -87.4556, -251.068, -149.203 )
+
+[sub_resource type="ConcavePolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+segments = Vector2Array( -178.77, 223.036, -122.032, 198.179, -122.032, 198.179, -69.6176, 221.955, -69.6176, 221.955, -24.7677, 230.601, -24.7677, 230.601, 26.0262, 231.681, 26.0262, 231.681, 77.9007, 221.414, 77.9007, 221.414, 128.695, 194.937, 128.695, 194.937, 177.867, 223.576, 177.867, 223.576, 131.937, 261.941, 131.937, 261.941, 78.9814, 281.394, 78.9814, 281.394, 0.0888824, 291.121, 0.0888824, 291.121, -79.344, 280.854, -79.344, 280.854, -133.92, 259.78, -133.92, 259.78, -178.77, 223.036 )
+
+[sub_resource type="ConcavePolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+segments = Vector2Array( 227.04, -182.234, 197.32, -130.36, 197.32, -130.36, 222.177, -78.4853, 222.177, -78.4853, 230.282, -48.7655, 230.282, -48.7655, 235.686, -2.29457, 235.686, -2.29457, 230.282, 56.0643, 230.282, 56.0643, 205.966, 114.423, 205.966, 114.423, 215.693, 142.522, 215.693, 142.522, 225.419, 178.726, 225.419, 178.726, 232.984, 170.08, 232.984, 170.08, 260.542, 132.795, 260.542, 132.795, 279.995, 84.163, 279.995, 84.163, 281.616, -75.2432, 281.616, -75.2432, 259.462, -139.006, 259.462, -139.006, 227.04, -182.234 )
+
+[sub_resource type="Animation" id=5]
+
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spaceship_glow:modulate")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1, 2 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 0.551882 ), Color( 1, 0, 0, 0 ) ]
+}
+
+[sub_resource type="ColorRamp" id=6]
+
+offsets = FloatArray( 0, 0.0760234, 0.707602, 1 )
+colors = ColorArray( 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0 )
 
 [node name="root" type="Control"]
 
-anchor/right = 1
+anchor/top = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
+margin/top = 800.0
+margin/right = 1024.0
+margin/bottom = 200.0
 script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+
+rect = Rect2( 0, 0, 1000, 1000 )
+own_world = false
+world = null
+transparent_bg = true
+render_target/enabled = true
+render_target/v_flip = false
+render_target/clear_on_new_frame = true
+render_target/filter = false
+render_target/gen_mipmaps = false
+render_target/update_mode = 3
+audio_listener/enable_2d = false
+audio_listener/enable_3d = false
+physics/object_picking = false
+gui/disable_input = false
+
+[node name="Tears_Container" type="Node2D" parent="Viewport"]
+
+transform/pos = Vector2( 500, 500 )
+
+[node name="colliders" type="Node2D" parent="."]
+
 __meta__ = {
 "_edit_lock_": true
 }
@@ -30,69 +98,276 @@ __meta__ = {
 material/material = ExtResource( 2 )
 z/z = 2
 viewport = NodePath("../Viewport")
-centered = false
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Viewport" type="Viewport" parent="."]
+[node name="Spaceship" type="KinematicBody2D" parent="."]
 
-rect = Rect2( 0, 0, 1280, 720 )
-own_world = false
-world = null
-transparent_bg = true
-render_target/enabled = true
-render_target/v_flip = false
-render_target/clear_on_new_frame = true
-render_target/filter = false
-render_target/gen_mipmaps = false
-render_target/update_mode = 2
-audio_listener/enable_2d = false
-audio_listener/enable_3d = false
-physics/object_picking = false
-gui/disable_input = false
-
-[node name="Spaceship_Background" type="Node2D" parent="."]
-
-transform/pos = Vector2( 512, 300 )
-z/z = -2
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 3 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 4 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/3/trigger = false
+collision/layers = 3
+collision/mask = 3
+collision/margin = 0.08
 script/script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Spaceship_Background"]
+[node name="Spaceship_Background" type="Sprite" parent="Spaceship"]
 
 transform/scale = Vector2( 0.7, 0.7 )
-z/z = 2
+z/z = -2
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Spaceship" type="Node2D" parent="."]
+[node name="Spaceship_glow" type="Sprite" parent="Spaceship/Spaceship_Background"]
 
-transform/pos = Vector2( 512, 300 )
-script/script = ExtResource( 5 )
+texture = ExtResource( 5 )
+modulate = Color( 1, 0, 0, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Kosmonauta" type="Node2D" parent="Spaceship"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spaceship/Spaceship_Background"]
 
-transform/pos = Vector2( -0.528831, 0.946815 )
-script/script = ExtResource( 6 )
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Glow = SubResource( 5 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Glow"
+
+[node name="top_left" type="Particles2D" parent="Spaceship/Spaceship_Background"]
+
+transform/pos = Vector2( -331.261, -332.113 )
+z/z = -1
+config/amount = 256
+config/lifetime = 1.0
+config/process_mode = 1
+config/half_extents = Vector2( 1, 1 )
+config/local_space = false
+params/direction = 225.0
+params/spread = 45.0
+params/linear_velocity = 60.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 4.0
+params/final_size = 0.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 1.0
+randomness/spread = 22.0
+randomness/linear_velocity = 1.0
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Spaceship/Kosmonauta"]
+[node name="top_right" type="Particles2D" parent="Spaceship/Spaceship_Background"]
 
-visibility/visible = false
-z/z = 2
+transform/pos = Vector2( 323.138, -317.374 )
+z/z = -1
+config/amount = 256
+config/lifetime = 1.0
+config/process_mode = 1
+config/half_extents = Vector2( 1, 1 )
+config/local_space = false
+params/direction = 135.0
+params/spread = 45.0
+params/linear_velocity = 60.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 4.0
+params/final_size = 0.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 1.0
+randomness/spread = 22.0
+randomness/linear_velocity = 1.0
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bot_right" type="Particles2D" parent="Spaceship/Spaceship_Background"]
+
+transform/pos = Vector2( 308.584, 312.605 )
+z/z = -1
+config/amount = 256
+config/lifetime = 1.0
+config/process_mode = 1
+config/half_extents = Vector2( 1, 1 )
+config/local_space = false
+params/direction = 45.0
+params/spread = 45.0
+params/linear_velocity = 60.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 4.0
+params/final_size = 0.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 1.0
+randomness/spread = 22.0
+randomness/linear_velocity = 1.0
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bot_left" type="Particles2D" parent="Spaceship/Spaceship_Background"]
+
+transform/pos = Vector2( -326.074, 316.512 )
+z/z = -1
+config/amount = 256
+config/lifetime = 1.0
+config/process_mode = 1
+config/half_extents = Vector2( 1, 1 )
+config/local_space = false
+params/direction = 315.0
+params/spread = 45.0
+params/linear_velocity = 60.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 4.0
+params/final_size = 0.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 1.0
+randomness/spread = 22.0
+randomness/linear_velocity = 1.0
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="tear_emiter1" type="Node2D" parent="Spaceship"]
+
+transform/pos = Vector2( -17, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="tear_emiter2" type="Node2D" parent="Spaceship"]
+
+transform/pos = Vector2( 19, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="Spaceship"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = true
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="shape_top" type="CollisionPolygon2D" parent="Spaceship"]
+
+build_mode = 1
+polygon = Vector2Array( -137.152, -220.582, -109.951, -205.323, -86.7317, -217.264, -72.1365, -221.908, -48.9168, -228.543, -2.47734, -234.513, 49.9329, -229.206, 72.4892, -223.235, 87.7478, -217.264, 110.968, -206.65, 131.534, -217.928, 181.954, -229.206, 167.358, -251.762, 61.211, -300.192, -60.1949, -297.538, -159.708, -256.406 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="shape_left" type="CollisionPolygon2D" parent="Spaceship"]
+
+build_mode = 1
+polygon = Vector2Array( -251.068, -149.203, -200.347, -122.005, -220.194, -77.8994, -230.485, -60.9922, -231.221, -22.0324, -231.221, 22.0731, -231.956, 60.2979, -219.459, 72.7944, -198.141, 121.311, -249.598, 149.244, -284.147, 86.7612, -287.823, 33.0995, -288.558, -36.7342, -281.942, -87.4556 )
+shape_range = Vector2( 1, 1 )
+trigger = false
+
+[node name="shape_bottom" type="CollisionPolygon2D" parent="Spaceship"]
+
+build_mode = 1
+polygon = Vector2Array( -178.77, 223.036, -122.032, 198.179, -69.6176, 221.955, -24.7677, 230.601, 26.0262, 231.681, 77.9007, 221.414, 128.695, 194.937, 177.867, 223.576, 131.937, 261.941, 78.9814, 281.394, 0.0888824, 291.121, -79.344, 280.854, -133.92, 259.78 )
+shape_range = Vector2( 2, 2 )
+trigger = false
+
+[node name="shaper_right" type="CollisionPolygon2D" parent="Spaceship"]
+
+build_mode = 1
+polygon = Vector2Array( 227.04, -182.234, 197.32, -130.36, 222.177, -78.4853, 230.282, -48.7655, 235.686, -2.29457, 230.282, 56.0643, 205.966, 114.423, 215.693, 142.522, 225.419, 178.726, 232.984, 170.08, 260.542, 132.795, 279.995, 84.163, 281.616, -75.2432, 259.462, -139.006 )
+shape_range = Vector2( 3, 3 )
+trigger = false
+
+[node name="background" type="Sprite" parent="."]
+
+z/z = -10
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background_dust" type="Sprite" parent="."]
+
+z/z = -9
 texture = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
+region_rect = Rect2( 0, 0, 1024, 1024 )
 
 
