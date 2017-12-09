@@ -1,0 +1,111 @@
+[gd_resource type="SampleLibrary" load_steps=16 format=1]
+
+[ext_resource path="res://sound/eject01_.smp" type="Sample" id=1]
+[ext_resource path="res://sound/eject02_.smp" type="Sample" id=2]
+[ext_resource path="res://sound/eject03_.smp" type="Sample" id=3]
+[ext_resource path="res://sound/hum.smp" type="Sample" id=4]
+[ext_resource path="res://sound/spark_01.smp" type="Sample" id=5]
+[ext_resource path="res://sound/spark_02.smp" type="Sample" id=6]
+[ext_resource path="res://sound/spark_03.smp" type="Sample" id=7]
+[ext_resource path="res://sound/spark_04.smp" type="Sample" id=8]
+[ext_resource path="res://sound/spark_05.smp" type="Sample" id=9]
+[ext_resource path="res://sound/spark_06.smp" type="Sample" id=10]
+[ext_resource path="res://sound/spawn_tear01.smp" type="Sample" id=11]
+[ext_resource path="res://sound/spawn_tear02.smp" type="Sample" id=12]
+[ext_resource path="res://sound/spawn_tear03.smp" type="Sample" id=13]
+[ext_resource path="res://sound/spawn_tear04.smp" type="Sample" id=14]
+[ext_resource path="res://sound/thrusters.smp" type="Sample" id=15]
+
+[resource]
+
+samples/eject01 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 1 )
+}
+samples/eject02 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 2 )
+}
+samples/eject03 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
+samples/hum = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+samples/spark_01 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
+samples/spark_02 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 6 )
+}
+samples/spark_03 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 7 )
+}
+samples/spark_04 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 8 )
+}
+samples/spark_05 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
+samples/spark_06 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 10 )
+}
+samples/spawn_tear01 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 11 )
+}
+samples/spawn_tear02 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 12 )
+}
+samples/spawn_tear03 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 13 )
+}
+samples/spawn_tear04 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 14 )
+}
+samples/thrusters = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 15 )
+}
+

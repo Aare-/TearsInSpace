@@ -63,21 +63,22 @@ func particle_sucked_out(body):
 	angular_velocity = 0
 	init_pos = get_pos()
 	pos_ang = (init_pos - spaceship.get_pos()).normalized().angle_to(Vector2(1, 0))
+	get_node("../../Spaceship/SamplePlayer2D").play("eject0"+str(randi()%3+1))
 	
 func particle_collided_with_wall(body):
 	if body != self: return
 	if dying: return
-	dying = true
+	dying         = true
 	animate_death = true
 	
-	velocity = 0
+	velocity         = 0
 	angular_velocity = 0
 	
 	get_node("Particles2D").set_emitting(true)
 	var vector_to_center = get_node("../../Spaceship").get_pos() - get_pos()
 	var angle_to_center  = atan2(vector_to_center.x,vector_to_center.y)
 	get_node("Particles2D").set_param(0,(angle_to_center/(2*PI))*360)
-	
+	get_node("../../Spaceship/SamplePlayer2D").play("spark_0"+str(randi()%6+1))
 	camera.shake(1.0, 18, 8)
 
 func animate_death( delta ):

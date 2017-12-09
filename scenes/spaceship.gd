@@ -10,7 +10,7 @@ var max_zoom_out             = 1.5
 var mobility                 = 0.08
 
 # Variables
-onready var ship_bakcground = get_tree().get_root().get_node("root/Spaceship_Background")
+#onready var ship_bakcground = get_tree().get_root().get_node("root/Spaceship_Background")
 onready var viewport        = get_tree().get_root().get_node("root/Viewport/Tears_Container")
 onready var camera          = get_tree().get_root().get_node("root/Spaceship/Camera2D")
 onready var astronaut       = get_tree().get_root().get_node("root/Spaceship/Spaceship_Background/Astronaut")
@@ -29,12 +29,14 @@ var engine_vector1 = Vector2(0,1).normalized()
 var engine_vector2 = Vector2(-1,0).normalized()
 var engine_vector3 = Vector2(0,-1).normalized()
 var engine_vector4 = Vector2(1,0).normalized()
+var engine_audio   = null
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	set_process_input(true)
 	set_fixed_process(true)
+	engine_audio = get_node("SamplePlayer").play("thrusters")
 
 func _fixed_process(delta):
 	handle_ship_movement(delta)
@@ -57,11 +59,28 @@ func handle_ship_movement(delta):
 
 func emit_engine_exhaust(move_vector):
 	var normalized_pos_change = move_vector.normalized()
-	get_node("Spaceship_Background/top").set_param(2 ,100 * clamp(engine_vector1.rotated(get_rot()).dot(normalized_pos_change),0,1))
-	get_node("Spaceship_Background/right" ).set_param(2 ,100 * clamp(engine_vector2.rotated(get_rot()).dot(normalized_pos_change),0,1))
-	get_node("Spaceship_Background/bottom" ).set_param(2 ,100 * clamp(engine_vector3.rotated(get_rot()).dot(normalized_pos_change),0,1))
-	get_node("Spaceship_Background/left").set_param(2, 100 * clamp(engine_vector4.rotated(get_rot()).dot(normalized_pos_change),0,1))
-
+	var displacement_length = (move_vector/max_displacement).length()
+	var dot_product = clamp(engine_vector1.rotated(get_rot()).dot(normalized_pos_change),0,1)
+	if dot_product> 0.4: get_node("Spaceship_Background/top").set_emitting(true)
+	else: get_node("Spaceship_Background/top").set_emitting(false)
+	get_node("Spaceship_Background/top"    ).set_param(2 ,100 * dot_product * displacement_length )
+	
+	dot_product = clamp(engine_vector2.rotated(get_rot()).dot(normalized_pos_change),0,1)
+	if dot_product> 0.4: get_node("Spaceship_Background/right").set_emitting(true)
+	else: get_node("Spaceship_Background/right").set_emitting(false)
+	get_node("Spaceship_Background/right"  ).set_param(2 ,100 * dot_product * displacement_length )
+	
+	dot_product = clamp(engine_vector3.rotated(get_rot()).dot(normalized_pos_change),0,1)
+	if dot_product> 0.4: get_node("Spaceship_Background/bottom").set_emitting(true)
+	else: get_node("Spaceship_Background/bottom").set_emitting(false)
+	get_node("Spaceship_Background/bottom" ).set_param(2 ,100 * dot_product * displacement_length )
+	
+	dot_product = clamp(engine_vector4.rotated(get_rot()).dot(normalized_pos_change),0,1)
+	if dot_product> 0.4: get_node("Spaceship_Background/left").set_emitting(true)
+	else: get_node("Spaceship_Background/left").set_emitting(false)
+	get_node("Spaceship_Background/left"   ).set_param(2 ,100 * dot_product * displacement_length )
+	get_node("SamplePlayer").set_volume( engine_audio, (move_vector/max_displacement).length() * 0.3 )
+	
 func gen_tear(delta):
 	tear_timer += delta
 	while tear_timer >= tear_timeout:
@@ -82,7 +101,7 @@ func _input(event):
 func new_tear(tear_pos, tear_ang):
 	var new_tear = tear.instance()
 	get_tree().get_root().get_node("root/Viewport/Tears_Container").add_child( new_tear )
-	new_tear.set_pos( tear_pos )		
+	new_tear.set_pos( tear_pos )
 	
 	var new_tear_collider = tear_collider.instance()
 	get_tree().get_root().get_node("root/colliders").add_child( new_tear_collider )
@@ -90,5 +109,6 @@ func new_tear(tear_pos, tear_ang):
 	new_tear_collider.set_scale()
 	new_tear_collider.set_pos(tear_pos)
 	new_tear_collider.pos_ang = tear_ang
+	get_node("SamplePlayer2D").play("spawn_tear0"+str(randi()%4+1))
 
 	
