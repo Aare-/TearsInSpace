@@ -70,6 +70,8 @@ func particle_sucked_out(body):
 
 func particle_collided_with_wall():
 #	if body != self: return
+	spaceship.player_scored()
+	if body != self: return
 	if dying: return
 	dying         = true
 	animate_death = true
@@ -83,6 +85,8 @@ func particle_collided_with_wall():
 	get_node("Particles2D").set_param(0,(angle_to_center/(2*PI))*360)
 	get_node("../../Spaceship/SamplePlayer2D").play("spark_0"+str(randi()%6+1))
 	camera.shake(1.0, 18, 8)
+	
+	spaceship.damage_ship()
 
 func animate_death( delta ):
 	fade -= delta * 4.0

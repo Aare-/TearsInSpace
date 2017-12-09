@@ -1,22 +1,8 @@
-[gd_scene load_steps=56 format=1]
+[gd_scene load_steps=34 format=1]
 
 [ext_resource path="res://scenes/title.gd" type="Script" id=1]
 [ext_resource path="res://shaders/ball_material.tres" type="CanvasItemMaterial" id=2]
 [ext_resource path="res://scenes/spaceship.gd" type="Script" id=3]
-[ext_resource path="res://scenes/image/ship_dysze.png" type="Texture" id=4]
-[ext_resource path="res://scenes/image/ship.png" type="Texture" id=5]
-[ext_resource path="res://scenes/image/glow.png" type="Texture" id=6]
-[ext_resource path="res://scenes/image/sad_space_marine.png" type="Texture" id=7]
-[ext_resource path="res://scenes/image/pipes_cover.png" type="Texture" id=8]
-[ext_resource path="res://scenes/shaky_camera.gd" type="Script" id=9]
-[ext_resource path="res://scenes/animate_electronics.gd" type="Script" id=10]
-[ext_resource path="res://scenes/image/glow_overlay_n.png" type="Texture" id=11]
-[ext_resource path="res://scenes/image/glow_overlay_w.png" type="Texture" id=12]
-[ext_resource path="res://scenes/image/glow_overlay_s.png" type="Texture" id=13]
-[ext_resource path="res://scenes/image/glow_overlay_e.png" type="Texture" id=14]
-[ext_resource path="res://sound/samplelibrary.tres" type="SampleLibrary" id=15]
-[ext_resource path="res://scenes/image/bg.png" type="Texture" id=16]
-[ext_resource path="res://scenes/image/bg_dust.png" type="Texture" id=17]
 [ext_resource path="res://scenes/image/ship.png" type="Texture" id=4]
 [ext_resource path="res://scenes/image/glow.png" type="Texture" id=5]
 [ext_resource path="res://scenes/image/sad_space_marine.png" type="Texture" id=6]
@@ -111,128 +97,24 @@ segments = Vector2Array( 18.7751, -71.2007, -63.8997, 17.418, -63.8997, 17.418, 
 custom_solver_bias = 0.0
 segments = Vector2Array( -21.212, -75.5229, -82.3704, -33.4021, -82.3704, -33.4021, 13.3953, 63.3342, 13.3953, 63.3342, 66.8664, 16.3379, 66.8664, 16.3379, -21.212, -75.5229 )
 
-[sub_resource type="ConvexPolygonShape2D" id=15]
+[sub_resource type="ConcavePolygonShape2D" id=15]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -128.427, -196.013, -143.057, -215.032, -159.708, -256.406, -60.1949, -297.538, -86.7317, -217.264 )
 segments = Vector2Array( -130.208, -223.926, -113.457, -201.771, -113.457, -201.771, -86.7317, -217.264, -86.7317, -217.264, -72.1365, -221.908, -72.1365, -221.908, -48.9168, -228.543, -48.9168, -228.543, -2.47734, -234.513, -2.47734, -234.513, 49.9329, -229.206, 49.9329, -229.206, 72.4892, -223.235, 72.4892, -223.235, 87.7478, -217.264, 87.7478, -217.264, 115.655, -206.634, 115.655, -206.634, 129.164, -223.386, 129.164, -223.386, 152.94, -250.403, 152.94, -250.403, 156.182, -256.888, 156.182, -256.888, 61.211, -300.192, 61.211, -300.192, -60.1949, -297.538, -60.1949, -297.538, -159.708, -256.406, -159.708, -256.406, -130.208, -223.926 )
 
-[sub_resource type="ConvexPolygonShape2D" id=16]
+[sub_resource type="ConcavePolygonShape2D" id=16]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -72.1365, -221.908, -86.7317, -217.264, -60.1949, -297.538 )
 segments = Vector2Array( -251.248, -151.518, -206.398, -118.556, -206.398, -118.556, -226.937, -67.7551, -226.937, -67.7551, -234.74, -60.4399, -234.74, -60.4399, -236.69, -49.7111, -236.69, -49.7111, -236.69, -0.943787, -236.69, -0.943787, -235.227, 61.4784, -235.227, 61.4784, -219.459, 72.7944, -219.459, 72.7944, -202.616, 111.096, -202.616, 111.096, -259.353, 138.114, -259.353, 138.114, -284.147, 86.7612, -284.147, 86.7612, -287.823, 33.0995, -287.823, 33.0995, -288.558, -36.7342, -288.558, -36.7342, -281.942, -87.4556, -281.942, -87.4556, -251.248, -151.518 )
 
-[sub_resource type="ConvexPolygonShape2D" id=17]
+[sub_resource type="ConcavePolygonShape2D" id=17]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -48.9168, -228.543, -72.1365, -221.908, -60.1949, -297.538, 61.211, -300.192 )
 segments = Vector2Array( -153.984, 251.049, -113.997, 204.578, -113.997, 204.578, -69.6176, 221.955, -69.6176, 221.955, -24.7677, 230.601, -24.7677, 230.601, 26.0262, 231.681, 26.0262, 231.681, 77.9007, 221.414, 77.9007, 221.414, 121.059, 205.118, 121.059, 205.118, 148.076, 248.347, 148.076, 248.347, 131.937, 261.941, 131.937, 261.941, 78.9814, 281.394, 78.9814, 281.394, 0.0888824, 291.121, 0.0888824, 291.121, -79.344, 280.854, -79.344, 280.854, -133.92, 259.78, -133.92, 259.78, -153.984, 251.049 )
 
-[sub_resource type="ConvexPolygonShape2D" id=18]
+[sub_resource type="ConcavePolygonShape2D" id=18]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -2.47734, -234.513, -48.9168, -228.543, 61.211, -300.192 )
-
-[sub_resource type="ConvexPolygonShape2D" id=19]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 49.9329, -229.206, -2.47734, -234.513, 61.211, -300.192, 162.227, -252.096 )
-
-[sub_resource type="ConvexPolygonShape2D" id=20]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 72.4892, -223.235, 49.9329, -229.206, 162.227, -252.096 )
-
-[sub_resource type="ConvexPolygonShape2D" id=21]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 87.7478, -217.264, 72.4892, -223.235, 162.227, -252.096 )
-
-[sub_resource type="ConvexPolygonShape2D" id=22]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 144.67, -215.032, 128.089, -201.378, 87.7478, -217.264, 162.227, -252.096, 157.837, -237.953 )
-
-[sub_resource type="ConvexPolygonShape2D" id=23]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -281.942, -87.4556, -245.956, -162.364, -202.066, -127.739, -226.937, -67.7551, -234.74, -60.4399, -288.558, -36.7342 )
-
-[sub_resource type="ConvexPolygonShape2D" id=24]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -288.558, -36.7342, -234.74, -60.4399, -236.69, -49.7111 )
-
-[sub_resource type="ConvexPolygonShape2D" id=25]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -288.558, -36.7342, -236.69, -49.7111, -236.69, -0.943787, -287.823, 33.0995 )
-
-[sub_resource type="ConvexPolygonShape2D" id=26]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -284.147, 86.7612, -287.823, 33.0995, -236.69, -0.943787, -235.227, 61.4784, -249.598, 149.244 )
-
-[sub_resource type="ConvexPolygonShape2D" id=27]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -198.141, 121.311, -249.598, 149.244, -235.227, 61.4784, -219.459, 72.7944 )
-
-[sub_resource type="ConvexPolygonShape2D" id=28]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -79.344, 280.854, -133.92, 259.78, -159.638, 238.504, -126.964, 197.539, -69.6176, 221.955, 0.0888824, 291.121 )
-
-[sub_resource type="ConvexPolygonShape2D" id=29]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 0.0888824, 291.121, -69.6176, 221.955, -24.7677, 230.601 )
-
-[sub_resource type="ConvexPolygonShape2D" id=30]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 0.0888824, 291.121, -24.7677, 230.601, 26.0262, 231.681, 78.9814, 281.394 )
-
-[sub_resource type="ConvexPolygonShape2D" id=31]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 78.9814, 281.394, 26.0262, 231.681, 77.9007, 221.414, 131.937, 261.941 )
-
-[sub_resource type="ConvexPolygonShape2D" id=32]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 131.937, 261.941, 77.9007, 221.414, 128.695, 194.937, 159.788, 238.016 )
-
-[sub_resource type="ConvexPolygonShape2D" id=33]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 222.177, -78.4853, 203.191, -127.251, 242.693, -160.413, 259.462, -139.006, 281.616, -75.2432 )
-
-[sub_resource type="ConvexPolygonShape2D" id=34]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 230.282, -48.7655, 222.177, -78.4853, 281.616, -75.2432, 279.995, 84.163 )
-
-[sub_resource type="ConvexPolygonShape2D" id=35]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 235.686, -2.29457, 230.282, -48.7655, 279.995, 84.163 )
-
-[sub_resource type="ConvexPolygonShape2D" id=36]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 230.282, 56.0643, 235.686, -2.29457, 279.995, 84.163 )
-
-[sub_resource type="ConvexPolygonShape2D" id=37]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 223.186, 138.043, 201.24, 126.339, 230.282, 56.0643, 279.995, 84.163, 260.542, 132.795, 251.958, 145.358 )
-
-[sub_resource type="ConvexPolygonShape2D" id=38]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 223.186, 138.043, 251.958, 145.358, 242.205, 156.087 )
 segments = Vector2Array( 251.825, -147.195, 207.516, -110.991, 207.516, -110.991, 222.177, -78.4853, 222.177, -78.4853, 230.282, -48.7655, 230.282, -48.7655, 235.686, -2.29457, 235.686, -2.29457, 230.282, 56.0643, 230.282, 56.0643, 207.516, 116.5, 207.516, 116.5, 230.751, 130.549, 230.751, 130.549, 254.527, 145.679, 254.527, 145.679, 265.334, 126.226, 265.334, 126.226, 273.439, 105.692, 273.439, 105.692, 279.995, 84.163, 279.995, 84.163, 281.616, -75.2432, 281.616, -75.2432, 259.462, -139.006, 259.462, -139.006, 251.825, -147.195 )
 
 [node name="root" type="Control"]
@@ -316,27 +198,20 @@ shapes/6/trigger = false
 shapes/7/shape = SubResource( 8 )
 shapes/7/transform = Matrix32( 1, 0, 0, 1, -184.106, 189.321 )
 shapes/7/trigger = false
-collision/layers = 0
-collision/mask = 0
+collision/layers = 3
+collision/mask = 3
 collision/margin = 0.08
 script/script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="dysze" type="Sprite" parent="Spaceship"]
-
-visibility/visible = false
-transform/scale = Vector2( 0.69, 0.69 )
-z/z = -2
-texture = ExtResource( 4 )
-
 [node name="Spaceship_Background" type="Sprite" parent="Spaceship"]
 
 editor/display_folded = true
 transform/scale = Vector2( 0.7, 0.7 )
 z/z = -2
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -344,7 +219,7 @@ __meta__ = {
 [node name="Spaceship_glow" type="Sprite" parent="Spaceship/Spaceship_Background"]
 
 visibility/visible = false
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 modulate = Color( 1, 0, 0, 0.0789564 )
 __meta__ = {
 "_edit_lock_": true
@@ -496,11 +371,7 @@ __meta__ = {
 
 transform/pos = Vector2( 0.611602, 1.83499 )
 transform/scale = Vector2( 0.884396, 0.904452 )
-texture = ExtResource( 7 )
-
-[node name="spaceship_cover" type="Sprite" parent="Spaceship/Spaceship_Background"]
-
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 
 [node name="tear_emiter1" type="Node2D" parent="Spaceship"]
 
@@ -531,7 +402,7 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
-script/script = ExtResource( 9 )
+script/script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -613,7 +484,6 @@ texture = ExtResource( 12 )
 
 [node name="pipes" type="Area2D" parent="Spaceship"]
 
-editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -154.222, -154.944 )
@@ -664,9 +534,8 @@ polygon = Vector2Array( -21.212, -75.5229, -82.3704, -33.4021, 13.3953, 63.3342,
 shape_range = Vector2( 3, 3 )
 trigger = false
 
-[node name="electronics_top" type="Area2D" parent="Spaceship"]
+[node name="electronics" type="Area2D" parent="Spaceship"]
 
-input/pickable = false
 input/pickable = true
 shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -680,33 +549,16 @@ shapes/2/trigger = false
 shapes/3/shape = SubResource( 18 )
 shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/3/trigger = false
-shapes/4/shape = SubResource( 19 )
-shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/4/trigger = false
-shapes/5/shape = SubResource( 20 )
-shapes/5/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/5/trigger = false
-shapes/6/shape = SubResource( 21 )
-shapes/6/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/6/trigger = false
-shapes/7/shape = SubResource( 22 )
-shapes/7/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/7/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 2
-script/script = ExtResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="shape_top" type="CollisionPolygon2D" parent="Spaceship/electronics_top"]
+[node name="shape_top" type="CollisionPolygon2D" parent="Spaceship/electronics"]
 
-build_mode = 0
-polygon = Vector2Array( -143.057, -215.032, -128.427, -196.013, -86.7317, -217.264, -72.1365, -221.908, -48.9168, -228.543, -2.47734, -234.513, 49.9329, -229.206, 72.4892, -223.235, 87.7478, -217.264, 128.089, -201.378, 144.67, -215.032, 157.837, -237.953, 162.227, -252.096, 61.211, -300.192, -60.1949, -297.538, -159.708, -256.406 )
-shape_range = Vector2( 0, 7 )
 build_mode = 1
 polygon = Vector2Array( -130.208, -223.926, -113.457, -201.771, -86.7317, -217.264, -72.1365, -221.908, -48.9168, -228.543, -2.47734, -234.513, 49.9329, -229.206, 72.4892, -223.235, 87.7478, -217.264, 115.655, -206.634, 129.164, -223.386, 152.94, -250.403, 156.182, -256.888, 61.211, -300.192, -60.1949, -297.538, -159.708, -256.406 )
 shape_range = Vector2( 0, 0 )
@@ -715,46 +567,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="glow" type="Sprite" parent="Spaceship/electronics_top"]
+[node name="shape_left" type="CollisionPolygon2D" parent="Spaceship/electronics"]
 
-visibility/blend_mode = 1
-transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 11 )
-modulate = Color( 1, 1, 1, 0 )
-
-[node name="electronics_left" type="Area2D" parent="Spaceship"]
-
-input/pickable = false
-shapes/0/shape = SubResource( 23 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-shapes/1/shape = SubResource( 24 )
-shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/1/trigger = false
-shapes/2/shape = SubResource( 25 )
-shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/2/trigger = false
-shapes/3/shape = SubResource( 26 )
-shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/3/trigger = false
-shapes/4/shape = SubResource( 27 )
-shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/4/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision/layers = 4
-script/script = ExtResource( 10 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="shape_left" type="CollisionPolygon2D" parent="Spaceship/electronics_left"]
-
-build_mode = 0
-polygon = Vector2Array( -245.956, -162.364, -202.066, -127.739, -226.937, -67.7551, -234.74, -60.4399, -236.69, -49.7111, -236.69, -0.943787, -235.227, 61.4784, -219.459, 72.7944, -198.141, 121.311, -249.598, 149.244, -284.147, 86.7612, -287.823, 33.0995, -288.558, -36.7342, -281.942, -87.4556 )
-shape_range = Vector2( 0, 4 )
 build_mode = 1
 polygon = Vector2Array( -251.248, -151.518, -206.398, -118.556, -226.937, -67.7551, -234.74, -60.4399, -236.69, -49.7111, -236.69, -0.943787, -235.227, 61.4784, -219.459, 72.7944, -202.616, 111.096, -259.353, 138.114, -284.147, 86.7612, -287.823, 33.0995, -288.558, -36.7342, -281.942, -87.4556 )
 shape_range = Vector2( 1, 1 )
@@ -763,46 +577,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="glow" type="Sprite" parent="Spaceship/electronics_left"]
+[node name="shape_bottom" type="CollisionPolygon2D" parent="Spaceship/electronics"]
 
-visibility/blend_mode = 1
-transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 12 )
-modulate = Color( 1, 1, 1, 0 )
-
-[node name="electronics_bottom" type="Area2D" parent="Spaceship"]
-
-input/pickable = false
-shapes/0/shape = SubResource( 28 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-shapes/1/shape = SubResource( 29 )
-shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/1/trigger = false
-shapes/2/shape = SubResource( 30 )
-shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/2/trigger = false
-shapes/3/shape = SubResource( 31 )
-shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/3/trigger = false
-shapes/4/shape = SubResource( 32 )
-shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/4/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision/layers = 8
-script/script = ExtResource( 10 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="shape_bottom" type="CollisionPolygon2D" parent="Spaceship/electronics_bottom"]
-
-build_mode = 0
-polygon = Vector2Array( -159.638, 238.504, -126.964, 197.539, -69.6176, 221.955, -24.7677, 230.601, 26.0262, 231.681, 77.9007, 221.414, 128.695, 194.937, 159.788, 238.016, 131.937, 261.941, 78.9814, 281.394, 0.0888824, 291.121, -79.344, 280.854, -133.92, 259.78 )
-shape_range = Vector2( 0, 4 )
 build_mode = 1
 polygon = Vector2Array( -153.984, 251.049, -113.997, 204.578, -69.6176, 221.955, -24.7677, 230.601, 26.0262, 231.681, 77.9007, 221.414, 121.059, 205.118, 148.076, 248.347, 131.937, 261.941, 78.9814, 281.394, 0.0888824, 291.121, -79.344, 280.854, -133.92, 259.78 )
 shape_range = Vector2( 2, 2 )
@@ -811,49 +587,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="glow" type="Sprite" parent="Spaceship/electronics_bottom"]
+[node name="shaper_right" type="CollisionPolygon2D" parent="Spaceship/electronics"]
 
-visibility/blend_mode = 1
-transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 13 )
-modulate = Color( 1, 1, 1, 0 )
-
-[node name="electronics_right" type="Area2D" parent="Spaceship"]
-
-input/pickable = false
-shapes/0/shape = SubResource( 33 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-shapes/1/shape = SubResource( 34 )
-shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/1/trigger = false
-shapes/2/shape = SubResource( 35 )
-shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/2/trigger = false
-shapes/3/shape = SubResource( 36 )
-shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/3/trigger = false
-shapes/4/shape = SubResource( 37 )
-shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/4/trigger = false
-shapes/5/shape = SubResource( 38 )
-shapes/5/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/5/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision/layers = 16
-script/script = ExtResource( 10 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="shaper_right" type="CollisionPolygon2D" parent="Spaceship/electronics_right"]
-
-build_mode = 0
-polygon = Vector2Array( 242.693, -160.413, 203.191, -127.251, 222.177, -78.4853, 230.282, -48.7655, 235.686, -2.29457, 230.282, 56.0643, 201.24, 126.339, 223.186, 138.043, 242.205, 156.087, 251.958, 145.358, 260.542, 132.795, 279.995, 84.163, 281.616, -75.2432, 259.462, -139.006 )
-shape_range = Vector2( 0, 5 )
 build_mode = 1
 polygon = Vector2Array( 251.825, -147.195, 207.516, -110.991, 222.177, -78.4853, 230.282, -48.7655, 235.686, -2.29457, 230.282, 56.0643, 207.516, 116.5, 230.751, 130.549, 254.527, 145.679, 265.334, 126.226, 273.439, 105.692, 279.995, 84.163, 281.616, -75.2432, 259.462, -139.006 )
 shape_range = Vector2( 3, 3 )
@@ -861,13 +596,6 @@ trigger = false
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="glow" type="Sprite" parent="Spaceship/electronics_right"]
-
-visibility/blend_mode = 1
-transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 14 )
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="SamplePlayer2D" type="SamplePlayer2D" parent="Spaceship"]
 
@@ -877,14 +605,12 @@ params/attenuation/min_distance = 1.0
 params/attenuation/max_distance = 2048.0
 params/attenuation/distance_exp = 1.0
 config/polyphony = 16
-config/samples = ExtResource( 15 )
 config/samples = ExtResource( 13 )
 config/pitch_random = 0.2
 
 [node name="SamplePlayer" type="SamplePlayer" parent="Spaceship"]
 
 config/polyphony = 4
-config/samples = ExtResource( 15 )
 config/samples = ExtResource( 13 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
@@ -902,7 +628,6 @@ default/chorus_send = 0.0
 [node name="background" type="Sprite" parent="."]
 
 z/z = -10
-texture = ExtResource( 16 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true
@@ -912,27 +637,10 @@ __meta__ = {
 
 transform/pos = Vector2( -0.487701, -3.41373 )
 z/z = -9
-texture = ExtResource( 17 )
 texture = ExtResource( 15 )
 region_rect = Rect2( 0, 0, 1024, 1024 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[connection signal="body_enter" from="Spaceship/electronics_top" to="Spaceship" method="_on_body_enter"]
-
-[connection signal="body_enter" from="Spaceship/electronics_top" to="Spaceship/electronics_top" method="_on_body_enter"]
-
-[connection signal="body_enter" from="Spaceship/electronics_left" to="Spaceship/electronics_left" method="_on_body_enter"]
-
-[connection signal="body_enter" from="Spaceship/electronics_left" to="Spaceship" method="_on_body_enter"]
-
-[connection signal="body_enter" from="Spaceship/electronics_bottom" to="Spaceship" method="_on_body_enter"]
-
-[connection signal="body_enter" from="Spaceship/electronics_bottom" to="Spaceship/electronics_bottom" method="_on_body_enter"]
-
-[connection signal="body_enter" from="Spaceship/electronics_right" to="Spaceship/electronics_right" method="_on_body_enter"]
-
-[connection signal="body_enter" from="Spaceship/electronics_right" to="Spaceship" method="_on_body_enter"]
 
 
