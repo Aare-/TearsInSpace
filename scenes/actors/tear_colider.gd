@@ -1,25 +1,25 @@
 extends RigidBody2D
 
 # Config
-var velocity_range    = Vector2(10, 10)
+var velocity_range      = Vector2( 60, 60 )
 var angular_veloc_range = Vector2(-0.5, 0.5)
 
-var blob = null
+var blob                = null
 
-var init_pos = Vector2(0, 0)
-var pos_rad = 0
-var pos_ang = 0
+var init_pos            = Vector2(0, 0)
+var pos_rad             = 0
+var pos_ang             = 0
 
-var velocity        = 0
+var velocity         = 0
 var angular_velocity = 5.0
 var mov_angle        = 0.0
-var scale_min       = 0.6
-var scale_max       = 0.6
-var random_scale    = 1
+var scale_min        = 0.4
+var scale_max        = 0.6
+var random_scale     = 1
 
-var dying = false
+var dying         = false
 var animate_death = false
-var fade = 1
+var fade          = 1
 
 onready var spaceship = get_tree().get_root().get_node("root/Spaceship")
 onready var camera    = get_tree().get_root().get_node("root/Spaceship/Camera2D")
@@ -28,7 +28,6 @@ func _ready():
 	randomize()
 	velocity  = rand_range( velocity_range.x, velocity_range.y )
 	angular_velocity = rand_range(angular_veloc_range.x, angular_veloc_range.y)
-
 	set_fixed_process( true )
 	get_tree().get_root().get_node("root/Spaceship/pipes").connect("body_enter",self,"particle_sucked_out")
 #	get_tree().get_root().get_node("root/Spaceship/electronics_top"   ).connect("body_enter",self,"particle_collided_with_wall")
@@ -61,7 +60,7 @@ func particle_sucked_out(body):
 	if body != self: return
 	if dying: return
 	dying = true
-
+	spaceship.player_scored()
 	velocity = 700
 	angular_velocity = 0
 	init_pos = get_pos()
@@ -69,9 +68,7 @@ func particle_sucked_out(body):
 	get_node("../../Spaceship/SamplePlayer2D").play("eject0"+str(randi()%3+1))
 
 func particle_collided_with_wall():
-#	if body != self: return
-	spaceship.player_scored()
-	if body != self: return
+	
 	if dying: return
 	dying         = true
 	animate_death = true
@@ -99,6 +96,7 @@ func set_scale():
 	random_scale = rand_range( scale_min, scale_max ) * rand_range( scale_min, scale_max )
 	get_node("CollisionShape2D").get_shape().set_radius( 40 * random_scale )
 	blob.set_scale( Vector2( random_scale, random_scale ) )
+	velocity *= random_scale
 
 func kill_me():
 	blob.queue_free()

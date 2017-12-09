@@ -5,10 +5,10 @@ extends KinematicBody2D
 var max_displacement         = Vector2(100, 100)
 var engine_movement_velocity = 0.0
 var engine_launch_threshold  = 0
-var tear_timeout             = 1.0
+var tear_timeout             = 2.0
 var max_zoom_out             = 1.5
 var mobility                 = 0.08
-var max_health				 = 3
+var max_health               = 30
 
 # Variables
 #onready var ship_bakcground = get_tree().get_root().get_node("root/Spaceship_Background")
@@ -60,6 +60,10 @@ func _ready():
 	update_score()
 
 func _fixed_process(delta):
+	if game_started:
+		tear_timeout -= delta * 0.02
+
+	tear_timeout = max( 0.5, tear_timeout )
 	if(!game_started):
 		return
 	
@@ -96,30 +100,6 @@ func player_scored():
 func update_score():
 	score_label.set_bbcode("SCORE: "+str(score))
 
-func emit_engine_exhaust(move_vector):
-	var normalized_pos_change = move_vector.normalized()
-	var displacement_length = (move_vector/max_displacement).length()
-	var dot_product = clamp(engine_vector1.rotated(get_rot()).dot(normalized_pos_change),0,1)
-	if dot_product> 0.4: get_node("Spaceship_Background/top").set_emitting(true)
-	else: get_node("Spaceship_Background/top").set_emitting(false)
-	get_node("Spaceship_Background/top"    ).set_param(2 ,100 * dot_product * displacement_length )
-	
-	dot_product = clamp(engine_vector2.rotated(get_rot()).dot(normalized_pos_change),0,1)
-	if dot_product> 0.4: get_node("Spaceship_Background/right").set_emitting(true)
-	else: get_node("Spaceship_Background/right").set_emitting(false)
-	get_node("Spaceship_Background/right"  ).set_param(2 ,100 * dot_product * displacement_length )
-	
-	dot_product = clamp(engine_vector3.rotated(get_rot()).dot(normalized_pos_change),0,1)
-	if dot_product> 0.4: get_node("Spaceship_Background/bottom").set_emitting(true)
-	else: get_node("Spaceship_Background/bottom").set_emitting(false)
-	get_node("Spaceship_Background/bottom" ).set_param(2 ,100 * dot_product * displacement_length )
-	
-	dot_product = clamp(engine_vector4.rotated(get_rot()).dot(normalized_pos_change),0,1)
-	if dot_product> 0.4: get_node("Spaceship_Background/left").set_emitting(true)
-	else: get_node("Spaceship_Background/left").set_emitting(false)
-	get_node("Spaceship_Background/left"   ).set_param(2 ,100 * dot_product * displacement_length )
-	get_node("SamplePlayer").set_volume( engine_audio, (move_vector/max_displacement).length() * 0.3 )
-	
 func gen_tear(delta):
 	tear_timer += delta
 	while tear_timer >= tear_timeout:
@@ -142,6 +122,7 @@ func _input(event):
 			logo.set_hidden(true)
 			logo_start.set_hidden(true)
 		game_started = true
+		
 
 func new_tear(tear_pos, tear_ang):
 	var new_tear = tear.instance()
