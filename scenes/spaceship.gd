@@ -17,6 +17,8 @@ onready var camera          = get_tree().get_root().get_node("root/Spaceship/Cam
 onready var astronaut       = get_tree().get_root().get_node("root/Spaceship/Spaceship_Background/Astronaut")
 onready var health_bar      = get_tree().get_root().get_node("root/Spaceship/Camera2D/CanvasLayer/Health")
 onready var score_label     = get_tree().get_root().get_node("root/Spaceship/Camera2D/CanvasLayer/Score_label")
+onready var logo            = get_tree().get_root().get_node("root/Spaceship/Camera2D/CanvasLayer/ui_title")
+onready var logo_start      = get_tree().get_root().get_node("root/Spaceship/Camera2D/CanvasLayer/ui_play_on")
 var tear                    = preload("res://scenes/actors/tear.tscn")
 var tear_collider           = preload("res://scenes/actors/tear_colider.tscn")
 
@@ -29,6 +31,7 @@ var tear_side_right = true
 var ship_rot = 0
 var score = 0
 var health = max_health
+var game_started = false
 
 var engine_vector1 = Vector2(0,1).normalized()
 var engine_vector2 = Vector2(-1,0).normalized()
@@ -47,6 +50,9 @@ func _ready():
 	update_score()
 
 func _fixed_process(delta):
+	if(!game_started):
+		return
+	
 	handle_ship_movement(delta)
 	gen_tear(delta)
 
@@ -71,8 +77,7 @@ func damage_ship():
 	update_health()
 	
 	if health == 0:
-		#TODO: display game over
-		pass
+		get_tree().reload_current_scene()
 		
 func player_scored():
 	score += 1
@@ -121,6 +126,12 @@ func _input(event):
 
 		ship_pos_diff = ship_pos_diff + mouse_delta
 		ship_pos_diff = ship_pos_diff.clamped(max_displacement.length())
+		
+	if (event.type == InputEvent.MOUSE_BUTTON):
+		if(!game_started):
+			logo.set_hidden(true)
+			logo_start.set_hidden(true)
+		game_started = true
 
 func new_tear(tear_pos, tear_ang):
 	var new_tear = tear.instance()
