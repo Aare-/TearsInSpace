@@ -8,12 +8,15 @@ var engine_launch_threshold  = 0
 var tear_timeout             = 2.0
 var max_zoom_out             = 1.5
 var mobility                 = 0.08
+var max_health				 = 3
 
 # Variables
 #onready var ship_bakcground = get_tree().get_root().get_node("root/Spaceship_Background")
 onready var viewport        = get_tree().get_root().get_node("root/Viewport/Tears_Container")
 onready var camera          = get_tree().get_root().get_node("root/Spaceship/Camera2D")
 onready var astronaut       = get_tree().get_root().get_node("root/Spaceship/Spaceship_Background/Astronaut")
+onready var health_bar      = get_tree().get_root().get_node("root/Spaceship/Camera2D/CanvasLayer/Health")
+onready var score_label     = get_tree().get_root().get_node("root/Spaceship/Camera2D/CanvasLayer/Score_label")
 var tear                    = preload("res://scenes/actors/tear.tscn")
 var tear_collider           = preload("res://scenes/actors/tear_colider.tscn")
 
@@ -24,6 +27,8 @@ var tears_movement = Vector2(0, 0)
 var tear_timer = 0
 var tear_side_right = true
 var ship_rot = 0
+var score = 0
+var health = max_health
 
 var engine_vector1 = Vector2(0,1).normalized()
 var engine_vector2 = Vector2(-1,0).normalized()
@@ -37,12 +42,13 @@ func _ready():
 	set_process_input(true)
 	set_fixed_process(true)
 	engine_audio = get_node("SamplePlayer").play("thrusters")
+	
+	update_health()
+	update_score()
 
 func _fixed_process(delta):
 	handle_ship_movement(delta)
 	gen_tear(delta)
-	
-	
 
 func handle_ship_movement(delta):
 	var pos_change = (ship_pos_diff - curr_pos_diff) * mobility
@@ -56,6 +62,24 @@ func handle_ship_movement(delta):
 
 	emit_engine_exhaust( curr_pos_diff )
 	
+	
+func update_health():	
+	health_bar.set_value(floor(float(health) / float(max_health) * 100.0))
+	
+func damage_ship():
+	health -= 1
+	update_health()
+	
+	if health == 0:
+		#TODO: display game over
+		pass
+		
+func player_scored():
+	score += 1
+	update_score()
+
+func update_score():
+	score_label.set_bbcode("SCORE: "+str(score))
 
 func emit_engine_exhaust(move_vector):
 	var normalized_pos_change = move_vector.normalized()

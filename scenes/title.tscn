@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=1]
+[gd_scene load_steps=32 format=1]
 
 [ext_resource path="res://scenes/title.gd" type="Script" id=1]
 [ext_resource path="res://shaders/ball_material.tres" type="CanvasItemMaterial" id=2]
@@ -7,9 +7,12 @@
 [ext_resource path="res://scenes/image/glow.png" type="Texture" id=5]
 [ext_resource path="res://scenes/image/sad_space_marine.png" type="Texture" id=6]
 [ext_resource path="res://scenes/shaky_camera.gd" type="Script" id=7]
-[ext_resource path="res://sound/samplelibrary.tres" type="SampleLibrary" id=8]
-[ext_resource path="res://scenes/image/bg.png" type="Texture" id=9]
-[ext_resource path="res://scenes/image/bg_dust.png" type="Texture" id=10]
+[ext_resource path="res://scenes/image/bar_bg.png" type="Texture" id=8]
+[ext_resource path="res://scenes/image/bar_progress.png" type="Texture" id=9]
+[ext_resource path="res://font/font.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://sound/samplelibrary.tres" type="SampleLibrary" id=11]
+[ext_resource path="res://scenes/image/bg.png" type="Texture" id=12]
+[ext_resource path="res://scenes/image/bg_dust.png" type="Texture" id=13]
 
 [sub_resource type="ConcavePolygonShape2D" id=1]
 
@@ -203,6 +206,7 @@ __meta__ = {
 
 [node name="Spaceship_Background" type="Sprite" parent="Spaceship"]
 
+editor/display_folded = true
 transform/scale = Vector2( 0.7, 0.7 )
 z/z = -2
 texture = ExtResource( 4 )
@@ -401,8 +405,61 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Spaceship/Camera2D"]
+
+layer = 128
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="Health" type="TextureProgress" parent="Spaceship/Camera2D/CanvasLayer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 28.0
+margin/right = 295.0
+margin/bottom = 68.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 50.0
+range/exp_edit = false
+range/rounded = false
+texture/under = ExtResource( 8 )
+texture/over = null
+texture/progress = ExtResource( 9 )
+radial_fill/center_offset = Vector2( 0, 0 )
+
+[node name="Score_label" type="RichTextLabel" parent="Spaceship/Camera2D/CanvasLayer"]
+
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+rect/min_size = Vector2( 5, 5 )
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 4.0
+margin/top = 339.0
+margin/right = 96.0
+margin/bottom = 288.0
+custom_fonts/mono_font = ExtResource( 10 )
+custom_fonts/bold_italics_font = ExtResource( 10 )
+custom_fonts/normal_font = ExtResource( 10 )
+custom_colors/default_color = Color( 0.882353, 0.909804, 0.137255, 1 )
+bbcode/enabled = false
+bbcode/bbcode = "SCORE: 0"
+visible_characters = -1
+percent_visible = 1.0
+
 [node name="pipes" type="Area2D" parent="Spaceship"]
 
+editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -154.222, -154.944 )
@@ -525,13 +582,13 @@ params/attenuation/min_distance = 1.0
 params/attenuation/max_distance = 2048.0
 params/attenuation/distance_exp = 1.0
 config/polyphony = 16
-config/samples = ExtResource( 8 )
+config/samples = ExtResource( 11 )
 config/pitch_random = 0.2
 
 [node name="SamplePlayer" type="SamplePlayer" parent="Spaceship"]
 
 config/polyphony = 4
-config/samples = ExtResource( 8 )
+config/samples = ExtResource( 11 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -548,7 +605,7 @@ default/chorus_send = 0.0
 [node name="background" type="Sprite" parent="."]
 
 z/z = -10
-texture = ExtResource( 9 )
+texture = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -557,7 +614,7 @@ __meta__ = {
 
 transform/pos = Vector2( -0.487701, -3.41373 )
 z/z = -9
-texture = ExtResource( 10 )
+texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 1024, 1024 )
 __meta__ = {
 "_edit_lock_": true
